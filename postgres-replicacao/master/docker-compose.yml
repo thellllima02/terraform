@@ -1,0 +1,24 @@
+services:
+  postgres-master:
+    image: postgres:17
+    container_name: postgres-master
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: escola
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_master_data:/var/lib/postgresql/data
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+    command: >
+      postgres
+      -c config_file=/etc/postgresql/postgresql.conf
+  adminer:
+    image: adminer
+    container_name: adminer
+
+    ports:
+      - "8080:8080"
+volumes:
+  postgres_master_data:

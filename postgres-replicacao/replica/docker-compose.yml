@@ -1,0 +1,9 @@
+services:
+  postgres-replica:
+    image: postgres:17
+    container_name: postgres-replica
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
