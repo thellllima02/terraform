@@ -13,9 +13,12 @@ Este documento descreve todos os pré-requisitos necessários para utilizar o Te
 
 Antes de utilizar o Terraform, é necessário possuir:
 
-- Sistema operacional Linux (Ubuntu 22.04 ou superior recomendado);
 - Conta na AWS;
+- Uma EC2 com o Sistema operacional Linux (Ubuntu 22.04 ou superior recomendado);
 - Permissões para criação de recursos na AWS;
+
+
+A EC2 vai precisar de:
 - Git instalado;
 - AWS CLI instalada;
 - Terraform instalado.
@@ -78,31 +81,6 @@ aws --version
 
 ---
 
-# Configurando a AWS CLI
-
-Configure suas credenciais:
-
-```bash
-aws configure
-```
-
-Serão solicitadas as seguintes informações:
-
-- AWS Access Key ID
-- AWS Secret Access Key
-- Região padrão (Ex.: us-east-1)
-- Formato de saída (json)
-
-Exemplo:
-
-```text
-AWS Access Key ID: ********************
-AWS Secret Access Key: ********************
-Default region name: us-east-1
-Default output format: json
-```
-
----
 
 # Instalando o Terraform
 
@@ -147,7 +125,7 @@ sudo apt update
 Instale o Terraform:
 
 ```bash
-sudo apt install terraform
+sudo apt-get install terraform
 ```
 
 Verifique se a instalação foi concluída:
@@ -191,6 +169,20 @@ Para um ambiente de estudos, utilize:
 
 > Em ambientes de produção, recomenda-se seguir o princípio do menor privilégio, criando políticas personalizadas.
 
+Clique em **Next**.
+
+---
+
+## Nome da Role
+
+A exemplo, foi utilizado:
+
+```bash
+TerraformEC2Role
+```
+
+Clique em **Create Role**.
+
 ---
 
 ## Associando a Role à instância EC2
@@ -213,7 +205,7 @@ Selecione a Role criada e clique em **Update IAM Role**.
 # Estrutura recomendada do projeto
 
 ```text
-terraform-project/
+postgres-replicacao/
 │
 ├── terraform/
 │   ├── provider.tf
@@ -234,7 +226,7 @@ terraform-project/
 
 # Inicializando o Terraform
 
-Após criar os arquivos do projeto, execute:
+Após criar os arquivos do projeto, execute dentro da pasta terraform:
 
 ```bash
 terraform init
