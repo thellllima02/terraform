@@ -205,21 +205,24 @@ Selecione a Role criada e clique em **Update IAM Role**.
 # Estrutura recomendada do projeto
 
 ```text
-postgres-replicacao/
-│
-├── terraform/
-│   ├── provider.tf
-│   ├── versions.tf
-│   ├── variables.tf
-│   ├── terraform.tfvars
-│   ├── main.tf
-│   ├── outputs.tf
-│   └── user-data.sh
-│
-├── docker-compose.yml
-├── master/
-├── replica/
-└── README.md
+└── postgres-replicacao
+    ├── master
+    │   ├── docker-compose.yml
+    │   ├── master.sh
+    │   └── postgresql.conf
+    ├── replica
+    │   ├── docker-compose.yml
+    │   └── replica.sh
+    └── terraform
+        ├── main.tf
+        ├── outputs.tf
+        ├── provider.tf
+        ├── terraform.tfstate
+        ├── terraform.tfstate.backup
+        ├── terraform.tfvars
+        ├── user-data.sh
+        ├── variables.tf
+        └── versions.tf
 ```
 
 ---
